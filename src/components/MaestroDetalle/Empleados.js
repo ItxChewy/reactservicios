@@ -5,7 +5,8 @@ import Global from '../../Global'
 export default class Empleados extends Component {
 
     state = {
-        empleados: []
+        empleados: [],
+        texto:""
     }
 
     loadEmpleados = () => {
@@ -23,10 +24,24 @@ export default class Empleados extends Component {
         this.loadEmpleados();
     }
 
+    componentDidUpdate = (odlProps) =>{
+        // console.log("dibujando component : " + this.props.iddepartamento);
+        console.log("oldprops: " + odlProps.iddepartamento)
+        console.log("Current props: " + this.props.iddepartamento)
+        //Solamente actualizaremos cuando props haya cambiado
+        if(odlProps.iddepartamento != this.props.iddepartamento){
+            this.loadEmpleados();
+        }
+        
+    }
+
     render() {
         return (
             <div>
                 <h1>Empleados {this.props.iddepartamento}</h1>
+                <h2>
+                    {this.state.texto}
+                </h2>
                 <table border={"1px"}>
                     <thead>
                         <tr>
