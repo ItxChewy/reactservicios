@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { useParams } from 'react-router-dom';
+
 
 export default class TablaMultiplicar extends Component {
     state = {
@@ -19,6 +19,12 @@ export default class TablaMultiplicar extends Component {
     }
     componentDidMount = () => {
         this.generarTablaMultiplicar();
+    }
+
+    componentDidUpdate = (oldProps) =>{
+        if(oldProps.numero != this.props.numero){
+            this.generarTablaMultiplicar();
+        }
     }
 
     render() {
